@@ -31,38 +31,33 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Outfit', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; overflow-x: hidden;
     }
     body::before {
       content: ''; position: fixed; inset: 0;
       background:
-        radial-gradient(ellipse 70% 50% at 10% 0%,  rgba(45,91,227,0.08)  0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 10% 0%,  rgba(45,91,227,0.08) 0%, transparent 55%),
         radial-gradient(ellipse 50% 40% at 90% 100%, rgba(124,58,237,0.07) 0%, transparent 55%);
       pointer-events: none; z-index: 0;
     }
-
     .app {
       position: relative; z-index: 1;
       max-width: 460px; margin: 0 auto;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      min-height: 100vh; display: flex; flex-direction: column;
       padding: 0 16px 48px;
     }
 
-    /* ── HEADER ── */
-    header {
-      padding: 26px 0 18px;
-      display: flex; align-items: center; gap: 14px;
-    }
+    /* ══ HEADER ══ */
+    header { padding: 26px 0 18px; display: flex; align-items: center; gap: 14px; }
     .logo-icon {
       width: 50px; height: 50px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       border-radius: 16px; display: grid; place-items: center;
       font-size: 24px; box-shadow: 0 6px 20px rgba(45,91,227,0.35); flex-shrink: 0;
+      overflow: hidden;
     }
+    .logo-icon img { width: 32px; height: 32px; object-fit: contain; border-radius: 6px; }
     .logo-text h1 { font-size: 19px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
     .logo-text h1 span { color: var(--accent); }
     .logo-text p { font-size: 11px; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; margin-top: 2px; }
@@ -78,34 +73,32 @@
       width: 34px; height: 34px; border-radius: 10px;
       background: var(--surface); border: 1.5px solid var(--border);
       display: grid; place-items: center; cursor: pointer;
-      color: var(--muted); font-size: 14px; transition: all 0.2s;
-      box-shadow: var(--shadow);
+      color: var(--muted); font-size: 14px; transition: all 0.2s; box-shadow: var(--shadow);
     }
     .admin-trigger:hover { border-color: var(--accent2); color: var(--accent2); }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    /* ── PANTALLAS ── */
+    /* ══ PANTALLAS ══ */
     .screen { display: none; animation: fadeUp 0.38s cubic-bezier(.22,1,.36,1); }
     .screen.active { display: block; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
-    /* ── PILL ESTADO ── */
+    /* ══ PILL ══ */
     .status-pill {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--surface); border: 1.5px solid var(--border);
-      border-radius: 30px; padding: 7px 16px;
-      font-size: 13px; color: var(--muted); margin-bottom: 18px;
-      font-weight: 500; box-shadow: var(--shadow);
+      border-radius: 30px; padding: 7px 16px; font-size: 13px; color: var(--muted);
+      margin-bottom: 18px; font-weight: 500; box-shadow: var(--shadow);
     }
     .status-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-    .status-pill.scanning { color: var(--accent);  border-color: rgba(45,91,227,0.3); }
+    .status-pill.scanning { color: var(--accent); border-color: rgba(45,91,227,0.3); }
     .status-pill.scanning .dot { background: var(--accent); animation: blink 1s infinite; }
     .status-pill.ok  { color: var(--success); border-color: rgba(5,150,105,0.3); }
     .status-pill.ok  .dot { background: var(--success); }
     .status-pill.err { color: var(--error);   border-color: rgba(220,38,38,0.3); }
     .status-pill.err .dot { background: var(--error); }
 
-    /* ── ESCÁNER ── */
+    /* ══ ESCÁNER ══ */
     .scanner-card {
       background: var(--surface); border: 1.5px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
@@ -130,7 +123,7 @@
     }
     @keyframes beam { 0%{top:12%;opacity:0} 8%{opacity:1} 92%{opacity:1} 100%{top:88%;opacity:0} }
 
-    /* ── BOTONES ── */
+    /* ══ BOTONES ══ */
     .btn {
       width: 100%; padding: 15px 20px; border-radius: var(--radius-sm); border: none;
       cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700;
@@ -140,32 +133,31 @@
     .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; box-shadow: 0 4px 20px rgba(45,91,227,0.35); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(45,91,227,0.45); }
     .btn-primary:active { transform: translateY(0); }
-    .btn-ghost { background: var(--surface); border: 1.5px solid var(--border); color: var(--muted); }
+    .btn-ghost  { background: var(--surface); border: 1.5px solid var(--border); color: var(--muted); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
     .btn-success { background: linear-gradient(135deg,#059669,#10b981); color: #fff; box-shadow: 0 4px 20px rgba(5,150,105,0.30); }
     .btn-success:hover { transform: translateY(-2px); }
     .btn-danger  { background: linear-gradient(135deg,#dc2626,#ef4444); color: #fff; box-shadow: 0 4px 20px rgba(220,38,38,0.25); }
 
-    /* ── MANUAL ── */
+    /* ══ MANUAL ══ */
     .divider { display: flex; align-items: center; gap: 10px; margin: 16px 0 14px; }
     .divider::before,.divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
     .divider span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
     .manual-row { display: flex; gap: 10px; }
     .manual-row input {
       flex: 1; background: var(--surface); border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm); padding: 13px 16px;
-      color: var(--text); font-family: 'Outfit', sans-serif; font-size: 15px;
+      border-radius: var(--radius-sm); padding: 13px 16px; color: var(--text);
+      font-family: 'Outfit', sans-serif; font-size: 15px;
       outline: none; transition: border-color 0.2s; box-shadow: var(--shadow);
     }
     .manual-row input::placeholder { color: var(--muted); }
     .manual-row input:focus { border-color: var(--accent); }
     .manual-row .btn { width: auto; padding: 13px 18px; flex-shrink: 0; }
 
-    /* ── CARGANDO ── */
+    /* ══ CARGANDO ══ */
     .loading-wrap {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      min-height: 320px; gap: 20px; text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 320px; gap: 20px; text-align: center;
     }
     .spinner-ring {
       width: 60px; height: 60px; border-radius: 50%;
@@ -180,7 +172,7 @@
     }
     .loading-wrap p { color: var(--muted); font-size: 14px; }
 
-    /* ── TARJETA ESTUDIANTE ── */
+    /* ══ TARJETA ESTUDIANTE ══ */
     .student-card {
       background: var(--surface); border: 1.5px solid var(--border);
       border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg);
@@ -193,7 +185,6 @@
     .card-top::after  { content:''; position:absolute; left:-20px; bottom:-40px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.05); }
     .card-top-label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:4px; }
     .card-top-title { font-size:22px; font-weight:800; color:#fff; letter-spacing:-0.5px; line-height:1.2; position:relative; z-index:1; }
-
     .card-avatar-row { display:flex; align-items:flex-end; gap:14px; padding:0 20px; margin-top:-40px; margin-bottom:4px; position:relative; z-index:2; }
     .avatar {
       width:76px; height:76px; border-radius:50%;
@@ -205,45 +196,161 @@
     .avatar-info { padding-bottom:6px; }
     .avatar-code { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:2px; display:flex; align-items:center; gap:5px; }
     .avatar-name { font-size:18px; font-weight:700; color:var(--text); letter-spacing:-0.3px; }
-
     .info-chips { display:flex; flex-wrap:wrap; gap:8px; padding:14px 20px 18px; border-bottom:1.5px solid var(--border); }
     .chip { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:30px; font-size:13px; font-weight:600; }
-    .chip-blue   { background:rgba(45,91,227,0.10);  color:var(--accent); }
+    .chip-blue   { background:rgba(45,91,227,0.10); color:var(--accent); }
     .chip-purple { background:rgba(124,58,237,0.10); color:var(--accent2); }
 
-    .trim-section { padding:18px 20px 22px; }
-    .trim-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
-    .trim-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:grid; place-items:center; color:#fff; font-size:16px; flex-shrink:0; }
-    .trim-header h3 { font-size:15px; font-weight:700; }
-    .trim-header p  { font-size:12px; color:var(--muted); }
+    /* ══ SECCIÓN ACADÉMICA ══ */
+    .acad-section { padding: 18px 20px 4px; }
+    .acad-section-title {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+    }
+    .acad-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg,var(--accent),var(--accent2));
+      display: grid; place-items: center; color: #fff; font-size: 16px; flex-shrink: 0;
+    }
+    .acad-section-title h3 { font-size: 15px; font-weight: 700; }
+    .acad-section-title p  { font-size: 12px; color: var(--muted); }
 
-    .metrics-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:16px; }
-    .metric { background:var(--surface2); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:14px 12px; text-align:center; position:relative; overflow:hidden; }
-    .metric::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
-    .metric.m1::before { background:linear-gradient(90deg,var(--accent),var(--accent2)); }
-    .metric.m2::before { background:linear-gradient(90deg,var(--accent2),#ec4899); }
-    .metric.m3::before { background:linear-gradient(90deg,var(--accent3),var(--success)); }
-    .metric label { display:block; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:8px; }
-    .metric .val { font-size:20px; font-weight:800; letter-spacing:-0.5px; line-height:1; }
-    .metric.m1 .val { color:var(--accent); }
-    .metric.m2 .val { color:var(--accent2); }
-    .metric.m3 .val { color:var(--accent3); }
+    /* ── Fila de trimestre (texto simple) ── */
+    .trim-row {
+      background: var(--surface2); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .trim-row label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+    .trim-row span  { font-size: 15px; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
 
-    .verify-row { display:flex; align-items:center; gap:10px; background:rgba(5,150,105,0.07); border:1.5px solid rgba(5,150,105,0.20); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:16px; }
-    .verify-row i { color:var(--success); font-size:20px; }
-    .verify-row p { font-size:13px; color:var(--success); font-weight:600; }
-    .verify-row small { display:block; color:var(--muted); font-size:11px; }
+    /* ══ CIRCULARES (SVG) ══ */
+    .circles-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-bottom: 14px;
+    }
+    .circ-card {
+      background: var(--surface2); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 16px 12px 12px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .circ-card label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--muted);
+    }
+    .circ-wrap { position: relative; width: 90px; height: 90px; }
+    .circ-wrap svg { transform: rotate(-90deg); }
+    .circ-bg  { fill: none; stroke: var(--border); stroke-width: 8; }
+    .circ-fg  { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1s ease, stroke 0.5s ease; }
+    .circ-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .circ-val  { font-size: 20px; font-weight: 800; line-height: 1; }
+    .circ-max  { font-size: 10px; color: var(--muted); margin-top: 1px; }
+    .circ-card .range-label {
+      font-size: 10px; color: var(--muted); text-align: center;
+    }
 
-    /* ── ERRORES ── */
+    /* ══ BARRA LINEAL PROYECTO ══ */
+    .proyecto-card {
+      background: var(--surface2); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+    .proyecto-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .proyecto-header label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+    .proyecto-badge {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+    }
+    .badge-no-iniciado  { background: rgba(220,38,38,0.12);  color: var(--error); }
+    .badge-en-proceso   { background: rgba(217,119,6,0.12);  color: var(--warning); }
+    .badge-completado   { background: rgba(5,150,105,0.12);  color: var(--success); }
+    .proyecto-bar-wrap {
+      position: relative; height: 12px; background: var(--border);
+      border-radius: 10px; overflow: hidden; margin-bottom: 6px;
+    }
+    .proyecto-bar-fill {
+      height: 100%; border-radius: 10px;
+      transition: width 1s ease;
+    }
+    .proyecto-markers {
+      display: flex; justify-content: space-between;
+      font-size: 9px; color: var(--muted); padding: 0 2px;
+    }
+    .proyecto-val {
+      text-align: center; font-size: 13px; font-weight: 700;
+      margin-top: 6px;
+    }
+
+    /* ══ SESIONES ══ */
+    .sesiones-section { padding: 0 20px 22px; }
+    .sesiones-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--surface2); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 12px 16px; cursor: pointer;
+      transition: all 0.2s; margin-bottom: 0;
+    }
+    .sesiones-toggle:hover { border-color: var(--accent); }
+    .sesiones-toggle-left { display: flex; align-items: center; gap: 10px; }
+    .sesiones-toggle-left .st-icon {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: linear-gradient(135deg,var(--accent3),var(--accent));
+      display: grid; place-items: center; color: #fff; font-size: 13px;
+    }
+    .sesiones-toggle-left span { font-size: 13px; font-weight: 700; color: var(--text); }
+    .sesiones-toggle-left small { display: block; font-size: 11px; color: var(--muted); }
+    .sesiones-toggle .chevron { color: var(--muted); transition: transform 0.3s; font-size: 13px; }
+    .sesiones-toggle.open .chevron { transform: rotate(180deg); }
+
+    .sesiones-grid-wrap {
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.4s cubic-bezier(.22,1,.36,1);
+    }
+    .sesiones-grid-wrap.open { max-height: 600px; }
+
+    .sesiones-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 8px; padding: 12px 0 0;
+    }
+    .sesion-cell {
+      background: var(--surface2); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 10px 6px;
+      display: flex; flex-direction: column; align-items: center; gap: 5px;
+    }
+    .sesion-cell .s-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+    .sesion-cell .s-icon  { font-size: 20px; line-height: 1; }
+    .sesion-cell .s-val   { font-size: 11px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    /* colores por estado */
+    .sesion-cell.s-red    { border-color: rgba(220,38,38,0.3);  background: rgba(220,38,38,0.05); }
+    .sesion-cell.s-yellow { border-color: rgba(217,119,6,0.3);  background: rgba(217,119,6,0.05); }
+    .sesion-cell.s-green  { border-color: rgba(5,150,105,0.3);  background: rgba(5,150,105,0.05); }
+    .sesion-cell.s-empty  { border-color: var(--border); opacity: 0.5; }
+
+    /* ══ VERIFY ROW ══ */
+    .verify-row {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(5,150,105,0.07); border: 1.5px solid rgba(5,150,105,0.20);
+      border-radius: var(--radius-sm); padding: 12px 14px; margin: 0 20px 16px;
+    }
+    .verify-row i { color: var(--success); font-size: 20px; }
+    .verify-row p { font-size: 13px; color: var(--success); font-weight: 600; }
+    .verify-row small { display: block; color: var(--muted); font-size: 11px; }
+    .card-footer-btn { padding: 0 20px 22px; }
+
+    /* ══ ERRORES ══ */
     .error-wrap { display:flex; flex-direction:column; align-items:center; text-align:center; padding:48px 24px; gap:16px; }
     .error-icon { width:84px; height:84px; border-radius:50%; display:grid; place-items:center; font-size:36px; }
-    .e-notfound { background:rgba(220,38,38,0.09);  color:var(--error); }
+    .e-notfound { background:rgba(220,38,38,0.09); color:var(--error); }
     .e-conn     { background:rgba(217,119,6,0.09);  color:var(--warning); }
     .error-wrap h2  { font-size:22px; font-weight:800; }
     .bad-code { font-family:'JetBrains Mono',monospace; font-size:16px; color:var(--error); background:rgba(220,38,38,0.08); border:1.5px solid rgba(220,38,38,0.2); border-radius:var(--radius-sm); padding:8px 24px; letter-spacing:3px; }
     .error-wrap p { font-size:14px; color:var(--muted); max-width:280px; line-height:1.65; }
 
-    /* ── MODAL LOGIN ADMIN ── */
+    /* ══ MODAL LOGIN ADMIN ══ */
     .modal-overlay { position:fixed; inset:0; background:rgba(10,14,26,0.65); backdrop-filter:blur(8px); z-index:200; display:none; place-items:center; padding:20px; }
     .modal-overlay.open { display:grid; }
     .modal-box { background:var(--surface); border:1.5px solid var(--border); border-radius:var(--radius); padding:28px 24px; width:100%; max-width:380px; animation:fadeUp 0.3s cubic-bezier(.22,1,.36,1); box-shadow:var(--shadow-lg); }
@@ -262,7 +369,7 @@
     .modal-actions { display:flex; gap:10px; }
     .modal-actions .btn { flex:1; padding:13px; }
 
-    /* ── PANEL ADMIN ── */
+    /* ══ PANEL ADMIN ══ */
     .admin-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
     .admin-title  { display:flex; align-items:center; gap:10px; }
     .admin-title .icon { width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg,#0f172a,#334155); display:grid; place-items:center; color:#fff; font-size:18px; box-shadow:0 4px 14px rgba(15,23,42,0.30); }
@@ -270,17 +377,15 @@
     .admin-title p  { font-size:11px; color:var(--muted); }
     .btn-logout { background:rgba(220,38,38,0.08); border:1.5px solid rgba(220,38,38,0.2); color:var(--error); border-radius:var(--radius-sm); padding:8px 14px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; transition:all 0.2s; }
     .btn-logout:hover { background:rgba(220,38,38,0.16); }
-
     .admin-card { background:var(--surface); border:1.5px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:14px; box-shadow:var(--shadow); }
     .admin-card-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
     .ac-icon { width:34px; height:34px; border-radius:10px; display:grid; place-items:center; font-size:15px; flex-shrink:0; }
-    .ac-icon.blue   { background:rgba(45,91,227,0.12);  color:var(--accent); }
+    .ac-icon.blue   { background:rgba(45,91,227,0.12); color:var(--accent); }
     .ac-icon.purple { background:rgba(124,58,237,0.12); color:var(--accent2); }
     .ac-icon.green  { background:rgba(5,150,105,0.12);  color:var(--success); }
     .ac-icon.red    { background:rgba(220,38,38,0.10);  color:var(--error); }
     .admin-card-header h3 { font-size:14px; font-weight:700; }
     .admin-card-header p  { font-size:11px; color:var(--muted); }
-
     .url-group { margin-bottom:14px; }
     .url-group label { display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); margin-bottom:6px; }
     .url-group input { width:100%; background:var(--surface2); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; color:var(--text); font-family:'JetBrains Mono',monospace; font-size:11px; outline:none; transition:border-color 0.2s; }
@@ -288,9 +393,7 @@
     .url-status { display:flex; align-items:center; gap:5px; font-size:11px; margin-top:5px; }
     .url-status.set   { color:var(--success); }
     .url-status.unset { color:var(--warning); }
-
     .pw-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
-
     .cols-info { background:var(--surface2); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:12px; }
     .cols-info table { width:100%; border-collapse:collapse; }
     .cols-info th { font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:var(--muted); font-weight:700; text-align:left; padding:4px 8px 6px; border-bottom:1px solid var(--border); }
@@ -298,12 +401,13 @@
     .cols-info td:first-child { color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:11px; }
     .key-badge { display:inline-block; background:rgba(45,91,227,0.10); color:var(--accent); font-size:9px; font-weight:700; padding:1px 6px; border-radius:6px; margin-left:4px; text-transform:uppercase; }
 
-    /* ── TOAST ── */
+    /* ══ TOAST ══ */
     #toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--text); color:#fff; border-radius:30px; padding:10px 22px; font-size:13px; font-weight:500; z-index:400; transition:transform 0.35s cubic-bezier(.34,1.56,.64,1); white-space:nowrap; box-shadow:0 8px 30px rgba(0,0,0,0.25); }
     #toast.show { transform:translateX(-50%) translateY(0); }
 
     @media(max-width:380px){
-      .metrics-grid { grid-template-columns:1fr; }
+      .circles-row { grid-template-columns:1fr 1fr; }
+      .sesiones-grid { grid-template-columns: repeat(3,1fr); }
       .pw-grid { grid-template-columns:1fr; }
     }
   </style>
@@ -312,7 +416,7 @@
 
 <div id="toast"></div>
 
-<!-- ── MODAL LOGIN ADMIN ── -->
+<!-- ══ MODAL LOGIN ADMIN ══ -->
 <div class="modal-overlay" id="adminLoginModal">
   <div class="modal-box">
     <h2>🔐 Panel Administrador</h2>
@@ -339,12 +443,10 @@
 
   <!-- HEADER -->
   <header>
- <div class="logo-icon">
-     <img src="logo.png" style="width:40px;height:40px;object-fit:contain;border-radius:6px"/>
-   </div>
+    <div class="logo-icon">🎓</div>
     <div class="logo-text">
-      <h1>Técnica <span>Tecnológica</span></h1>
-      <p>Consulta de Desempeño</p>
+      <h1>Acceso <span>Estudiantil</span></h1>
+      <p>Consulta de calificaciones</p>
     </div>
     <div class="header-right">
       <div class="live-badge"><div class="live-dot"></div> En vivo</div>
@@ -354,7 +456,7 @@
     </div>
   </header>
 
-  <!-- ── PANTALLA 1: ESCÁNER ── -->
+  <!-- ══ PANTALLA 1: ESCÁNER ══ -->
   <div class="screen active" id="screen-scan">
     <div class="status-pill" id="statusPill">
       <div class="dot"></div><span id="statusTxt">Listo para escanear</span>
@@ -380,7 +482,7 @@
     </div>
   </div>
 
-  <!-- ── PANTALLA 2: CARGANDO ── -->
+  <!-- ══ PANTALLA 2: CARGANDO ══ -->
   <div class="screen" id="screen-loading">
     <div class="loading-wrap">
       <div class="spinner-ring"></div>
@@ -389,14 +491,19 @@
     </div>
   </div>
 
-  <!-- ── PANTALLA 3: TARJETA ESTUDIANTE ── -->
+  <!-- ══ PANTALLA 3: TARJETA ESTUDIANTE ══ -->
   <div class="screen" id="screen-user">
     <div class="status-pill ok"><div class="dot"></div><span>Acceso verificado</span></div>
+
     <div class="student-card">
+
+      <!-- Franja superior -->
       <div class="card-top">
         <div class="card-top-label">Sistema de Acceso Estudiantil</div>
         <div class="card-top-title">Registro Académico</div>
       </div>
+
+      <!-- Avatar + nombre -->
       <div class="card-avatar-row">
         <div class="avatar" id="cardAvatar">?</div>
         <div class="avatar-info">
@@ -404,46 +511,129 @@
           <div class="avatar-name" id="cardNombre">—</div>
         </div>
       </div>
+
+      <!-- Chips curso / paralelo -->
       <div class="info-chips">
         <span class="chip chip-blue"><i class="fas fa-book-open"></i>&nbsp;<span id="cardCurso">—</span></span>
         <span class="chip chip-purple"><i class="fas fa-users"></i>&nbsp;Paralelo&nbsp;<span id="cardParalelo">—</span></span>
       </div>
-      <div class="trim-section">
-        <div class="trim-header">
-          <div class="trim-icon"><i class="fas fa-chart-bar"></i></div>
+
+      <!-- ── SECCIÓN ACADÉMICA ── -->
+      <div class="acad-section">
+        <div class="acad-section-title">
+          <div class="acad-icon"><i class="fas fa-chart-bar"></i></div>
           <div><h3>1er Trimestre</h3><p>Datos académicos del período</p></div>
         </div>
-        <div class="metrics-grid">
-          <div class="metric m1"><label>Trimestre</label><div class="val" id="mTrimestre">—</div></div>
-          <div class="metric m2"><label>Evaluación</label><div class="val" id="mEvaluacion">—</div></div>
-          <div class="metric m3"><label>Archivador</label><div class="val" id="mArchivador">—</div></div>
+
+        <!-- Trimestre (texto) -->
+        <div class="trim-row">
+          <label><i class="fas fa-calendar-days" style="margin-right:5px;color:var(--accent)"></i>Período</label>
+          <span id="mTrimestre">—</span>
         </div>
-        <div class="verify-row">
-          <i class="fas fa-circle-check"></i>
-          <div><p>Consulta exitosa</p><small id="cardTimestamp">—</small></div>
+
+        <!-- Evaluación y Archivador (circulares) -->
+        <div class="circles-row">
+          <!-- Evaluación / 45 -->
+          <div class="circ-card">
+            <label>Evaluación</label>
+            <div class="circ-wrap">
+              <svg viewBox="0 0 90 90" width="90" height="90">
+                <circle class="circ-bg" cx="45" cy="45" r="36"/>
+                <circle class="circ-fg" id="circEvalFg" cx="45" cy="45" r="36"
+                        stroke-dasharray="226.2" stroke-dashoffset="226.2"/>
+              </svg>
+              <div class="circ-center">
+                <span class="circ-val" id="circEvalVal">—</span>
+                <span class="circ-max">/ 45</span>
+              </div>
+            </div>
+            <div class="range-label" id="circEvalLabel">—</div>
+          </div>
+
+          <!-- Archivador / 40 -->
+          <div class="circ-card">
+            <label>Archivador</label>
+            <div class="circ-wrap">
+              <svg viewBox="0 0 90 90" width="90" height="90">
+                <circle class="circ-bg" cx="45" cy="45" r="36"/>
+                <circle class="circ-fg" id="circArchFg" cx="45" cy="45" r="36"
+                        stroke-dasharray="226.2" stroke-dashoffset="226.2"/>
+              </svg>
+              <div class="circ-center">
+                <span class="circ-val" id="circArchVal">—</span>
+                <span class="circ-max">/ 40</span>
+              </div>
+            </div>
+            <div class="range-label" id="circArchLabel">—</div>
+          </div>
         </div>
+
+        <!-- Proyecto (barra lineal) -->
+        <div class="proyecto-card">
+          <div class="proyecto-header">
+            <label><i class="fas fa-rocket" style="margin-right:5px;color:var(--accent2)"></i>Proyecto</label>
+            <span class="proyecto-badge" id="proyectoBadge">—</span>
+          </div>
+          <div class="proyecto-bar-wrap">
+            <div class="proyecto-bar-fill" id="proyectoBar" style="width:0%"></div>
+          </div>
+          <div class="proyecto-markers">
+            <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span>
+          </div>
+          <div class="proyecto-val" id="proyectoVal">—</div>
+        </div>
+      </div>
+
+      <!-- ── SESIONES (desplegable) ── -->
+      <div class="sesiones-section">
+        <div class="sesiones-toggle" id="sesionesToggle" onclick="toggleSesiones()">
+          <div class="sesiones-toggle-left">
+            <div class="st-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div>
+              <span>Disciplina por Sesión</span>
+              <small>Ver las 12 sesiones del trimestre</small>
+            </div>
+          </div>
+          <i class="fas fa-chevron-down chevron"></i>
+        </div>
+
+        <div class="sesiones-grid-wrap" id="sesionesGridWrap">
+          <div class="sesiones-grid" id="sesionesGrid">
+            <!-- generado dinámicamente -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Verificación -->
+      <div class="verify-row">
+        <i class="fas fa-circle-check"></i>
+        <div><p>Consulta exitosa</p><small id="cardTimestamp">—</small></div>
+      </div>
+
+      <div class="card-footer-btn">
         <button class="btn btn-success" onclick="resetApp()">
           <i class="fas fa-rotate-left"></i> Consultar otro estudiante
         </button>
       </div>
-    </div>
+
+    </div><!-- /student-card -->
   </div>
 
-  <!-- ── PANTALLA 4: NO ENCONTRADO ── -->
+  <!-- ══ PANTALLA 4: NO ENCONTRADO ══ -->
   <div class="screen" id="screen-notfound">
     <div class="status-pill err"><div class="dot"></div><span>No encontrado</span></div>
     <div class="error-wrap">
       <div class="error-icon e-notfound"><i class="fas fa-user-slash"></i></div>
       <h2>Código no encontrado</h2>
       <div class="bad-code" id="errCode">—</div>
-      <p>El código ingresado no existe en la base de datos. Verifica que sea correcto.</p>
+      <p>El código ingresado no existe en la base de datos.</p>
       <button class="btn btn-primary" style="max-width:260px" onclick="resetApp()">
         <i class="fas fa-rotate-left"></i> Intentar de nuevo
       </button>
     </div>
   </div>
 
-  <!-- ── PANTALLA 5: ERROR CONEXIÓN ── -->
+  <!-- ══ PANTALLA 5: ERROR ══ -->
   <div class="screen" id="screen-error">
     <div class="status-pill err"><div class="dot"></div><span>Error de conexión</span></div>
     <div class="error-wrap">
@@ -456,20 +646,16 @@
     </div>
   </div>
 
-  <!-- ── PANTALLA 6: PANEL ADMIN ── -->
+  <!-- ══ PANTALLA 6: PANEL ADMIN ══ -->
   <div class="screen" id="screen-admin">
-
     <div class="admin-header">
       <div class="admin-title">
         <div class="icon"><i class="fas fa-shield-halved"></i></div>
         <div><h2>Panel Admin</h2><p>Configuración del sistema</p></div>
       </div>
-      <button class="btn-logout" onclick="cerrarAdmin()">
-        <i class="fas fa-right-from-bracket"></i> Salir
-      </button>
+      <button class="btn-logout" onclick="cerrarAdmin()"><i class="fas fa-right-from-bracket"></i> Salir</button>
     </div>
 
-    <!-- URLs Google Sheets -->
     <div class="admin-card">
       <div class="admin-card-header">
         <div class="ac-icon blue"><i class="fas fa-table"></i></div>
@@ -490,50 +676,36 @@
       </button>
     </div>
 
-    <!-- Estructura de columnas -->
     <div class="admin-card">
       <div class="admin-card-header">
         <div class="ac-icon purple"><i class="fas fa-list-ol"></i></div>
-        <div><h3>Estructura de columnas</h3><p>Referencia de las hojas del Sheet</p></div>
+        <div><h3>Estructura de columnas</h3><p>Hoja "1er trimestre"</p></div>
       </div>
-      <p style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600;">Hoja: <span style="color:var(--accent)">estudiantes</span></p>
       <div class="cols-info">
         <table>
           <thead><tr><th>Col</th><th>Dato</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Nº correlativo</td></tr>
-            <tr><td>2</td><td>Código <span class="key-badge">🔑 clave</span></td></tr>
-            <tr><td>3</td><td>Nombre</td></tr>
-            <tr><td>4</td><td>Curso</td></tr>
-            <tr><td>5</td><td>Paralelo</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:12px;color:var(--muted);margin:10px 0 8px;font-weight:600;">Hoja: <span style="color:var(--accent2)">1er trimestre</span></p>
-      <div class="cols-info">
-        <table>
-          <thead><tr><th>Col</th><th>Dato</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td>Nº correlativo</td></tr>
-            <tr><td>2</td><td>Código <span class="key-badge">🔑 clave</span></td></tr>
-            <tr><td>3</td><td>Nombre</td></tr>
+            <tr><td>1</td><td>Nº</td></tr>
+            <tr><td>2</td><td>Código <span class="key-badge">🔑</span></td></tr>
+            <tr><td>3</td><td>Estudiante</td></tr>
             <tr><td>4</td><td>Trimestre</td></tr>
-            <tr><td>5</td><td>Evaluación</td></tr>
-            <tr><td>6</td><td>Archivador</td></tr>
+            <tr><td>5</td><td>Evaluación (0–45)</td></tr>
+            <tr><td>6</td><td>Archivador (0–40)</td></tr>
+            <tr><td>7</td><td>Proyecto (0–40)</td></tr>
+            <tr><td>8–19</td><td>Sesiones 1–12 (1–10)</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Cambiar contraseña -->
     <div class="admin-card">
       <div class="admin-card-header">
         <div class="ac-icon red"><i class="fas fa-key"></i></div>
-        <div><h3>Cambiar contraseña</h3><p>Contraseña de acceso al panel admin</p></div>
+        <div><h3>Cambiar contraseña</h3><p>Acceso al panel admin</p></div>
       </div>
       <div class="pw-grid">
         <div class="field-wrap" style="margin-bottom:0">
-          <label>Nueva contraseña</label>
+          <label>Nueva</label>
           <div class="input-inner">
             <input type="password" id="newPw1" placeholder="••••••••"/>
             <button class="toggle-pw" onclick="togglePw('newPw1',this)" tabindex="-1"><i class="fas fa-eye"></i></button>
@@ -547,11 +719,10 @@
           </div>
         </div>
       </div>
-      <p style="font-size:11px;color:var(--muted);margin:8px 0 14px">Mínimo 4 caracteres. Se guarda en este dispositivo.</p>
+      <p style="font-size:11px;color:var(--muted);margin:8px 0 14px">Mínimo 4 caracteres.</p>
       <button class="btn btn-danger" onclick="cambiarPassword()"><i class="fas fa-lock"></i> Actualizar contraseña</button>
     </div>
 
-    <!-- Probar conexión -->
     <div class="admin-card">
       <div class="admin-card-header">
         <div class="ac-icon green"><i class="fas fa-plug"></i></div>
@@ -572,21 +743,18 @@
 
 <script>
 /* ═══════════════════════════════════════════════════
-   URLS FIJAS — configuradas una sola vez por el admin
+   URLs FIJAS — grabadas en el código
    Los padres NO necesitan configurar nada
 ═══════════════════════════════════════════════════ */
 const URL_EST_DEFAULT  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQA4YZhquQuJDR3j9EMJ6O5ZQGBkKyUC63SUpRliIZ6IP8zQs-UMMUl5LaQV1DbeAPFNA9gkYpNVwkg/pub?gid=0&single=true&output=csv';
 const URL_TRIM_DEFAULT = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQA4YZhquQuJDR3j9EMJ6O5ZQGBkKyUC63SUpRliIZ6IP8zQs-UMMUl5LaQV1DbeAPFNA9gkYpNVwkg/pub?gid=1791565588&single=true&output=csv';
 
-// El admin puede sobreescribir las URLs desde el panel (se guarda en localStorage)
-// Si no hay nada guardado, usa las URLs por defecto de arriba
 let URL_EST  = localStorage.getItem('csv_est')  || URL_EST_DEFAULT;
 let URL_TRIM = localStorage.getItem('csv_trim') || URL_TRIM_DEFAULT;
-
-const DEFAULT_PW  = 'admin1234';
+const DEFAULT_PW = 'admin1234';
 let adminPassword = localStorage.getItem('admin_pw') || DEFAULT_PW;
 
-let html5QrCode    = null;
+let html5QrCode = null;
 let scannerRunning = false;
 
 /* ── NAVEGACIÓN ── */
@@ -609,8 +777,8 @@ function startScanner() {
     scannerRunning = true;
     const btn = document.getElementById('btnScan');
     btn.innerHTML = '<i class="fas fa-stop-circle"></i> Detener escáner';
-    btn.classList.replace('btn-primary', 'btn-ghost');
-    setStatus('scanning', 'Escaneando…');
+    btn.classList.replace('btn-primary','btn-ghost');
+    setStatus('scanning','Escaneando…');
     document.getElementById('scanBeam').style.display = 'block';
   }).catch(() => toast('⚠️ No se pudo acceder a la cámara.'));
 }
@@ -618,12 +786,11 @@ function startScanner() {
 function stopScanner() {
   if (!html5QrCode || !scannerRunning) return;
   html5QrCode.stop().then(() => {
-    html5QrCode.clear();
-    scannerRunning = false;
+    html5QrCode.clear(); scannerRunning = false;
     const btn = document.getElementById('btnScan');
     btn.innerHTML = '<i class="fas fa-qrcode"></i> Iniciar Escáner';
-    btn.classList.replace('btn-ghost', 'btn-primary');
-    setStatus('idle', 'Listo para escanear');
+    btn.classList.replace('btn-ghost','btn-primary');
+    setStatus('idle','Listo para escanear');
     document.getElementById('scanBeam').style.display = 'none';
   });
 }
@@ -632,43 +799,39 @@ function stopScanner() {
 async function buscar(codigo) {
   codigo = (codigo || '').trim();
   if (!codigo) { toast('⚠️ Ingresa un código válido.'); return; }
-
   document.getElementById('loadCode').textContent = codigo;
   show('loading');
-
   try {
     const [filaEst, filaTrim] = await Promise.all([
-      buscarEnCSV(URL_EST,  codigo, 1),  // col[1] = código en "estudiantes"
-      buscarEnCSV(URL_TRIM, codigo, 1)   // col[1] = código en "1er trimestre"
+      buscarEnCSV(URL_EST,  codigo, 1),
+      buscarEnCSV(URL_TRIM, codigo, 1)
     ]);
-
     if (!filaEst) {
       document.getElementById('errCode').textContent = codigo;
-      show('notfound');
-      return;
+      show('notfound'); return;
     }
-
-    /* estudiantes:   col[0]=Nº | col[1]=Código | col[2]=Nombre | col[3]=Curso | col[4]=Paralelo   */
-    /* 1er trimestre: col[0]=Nº | col[1]=Código | col[2]=Nombre | col[3]=Trim  | col[4]=Eval | col[5]=Archiv */
+    /* estudiantes: [0]=Nº [1]=Código [2]=Nombre [3]=Curso [4]=Paralelo */
+    /* 1er trim:    [0]=Nº [1]=Código [2]=Estudiante [3]=Trimestre [4]=Evaluación
+                   [5]=Archivador [6]=Proyecto [7..18]=Sesión1..12 */
     mostrarTarjeta({
       codigo,
-      nombre:    filaEst[2] || '—',
-      curso:     filaEst[3] || '—',
-      paralelo:  filaEst[4] || '—',
-      trimVal:   filaTrim ? (filaTrim[3] || '—') : '—',
-      evalVal:   filaTrim ? (filaTrim[4] || '—') : '—',
-      archivVal: filaTrim ? (filaTrim[5] || '—') : '—',
+      nombre:   filaEst[2] || '—',
+      curso:    filaEst[3] || '—',
+      paralelo: filaEst[4] || '—',
+      trimVal:  filaTrim ? (filaTrim[3] || '—') : '—',
+      evalVal:  filaTrim ? parseFloat(filaTrim[4]) || 0 : 0,
+      archVal:  filaTrim ? parseFloat(filaTrim[5]) || 0 : 0,
+      proyVal:  filaTrim ? parseFloat(filaTrim[6]) || 0 : 0,
+      sesiones: filaTrim ? filaTrim.slice(7, 19) : []
     });
-
   } catch (err) {
     console.error(err);
-    document.getElementById('errMsg').textContent =
-      'Error: ' + err.message + '. Verifica que las hojas estén publicadas como CSV.';
+    document.getElementById('errMsg').textContent = 'Error: ' + err.message;
     show('error');
   }
 }
 
-/* ── FETCH CSV + BUSCAR FILA ── */
+/* ── FETCH CSV ── */
 async function buscarEnCSV(url, codigo, col) {
   const res = await fetch(url);
   if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -677,7 +840,6 @@ async function buscarEnCSV(url, codigo, col) {
   return filas.find(f => (f[col] || '').trim().toLowerCase() === cn) || null;
 }
 
-/* ── PARSEAR CSV ── */
 function parseCSV(text) {
   const lines = text.trim().split('\n').filter(l => l.trim());
   if (lines.length < 2) return [];
@@ -690,32 +852,175 @@ function splitCSV(line) {
     else if (c === ',' && !inQ) { out.push(cur.trim()); cur = ''; }
     else { cur += c; }
   }
-  out.push(cur.trim());
-  return out;
+  out.push(cur.trim()); return out;
 }
 
-/* ── MOSTRAR TARJETA ── */
-function mostrarTarjeta({ codigo, nombre, curso, paralelo, trimVal, evalVal, archivVal }) {
+/* ═══════════════════════════════════════════════════
+   MOSTRAR TARJETA — con todos los elementos gráficos
+═══════════════════════════════════════════════════ */
+function mostrarTarjeta({ codigo, nombre, curso, paralelo, trimVal, evalVal, archVal, proyVal, sesiones }) {
+  /* Datos básicos */
   const p = nombre.trim().split(' ');
-  const ini = ((p[0]?.[0] || '') + (p[1]?.[0] || '')).toUpperCase();
+  const ini = ((p[0]?.[0]||'')+(p[1]?.[0]||'')).toUpperCase();
   document.getElementById('cardAvatar').textContent   = ini || '?';
   document.getElementById('cardCodigo').textContent   = codigo;
   document.getElementById('cardNombre').textContent   = nombre;
   document.getElementById('cardCurso').textContent    = curso;
   document.getElementById('cardParalelo').textContent = paralelo;
   document.getElementById('mTrimestre').textContent   = trimVal;
-  document.getElementById('mEvaluacion').textContent  = evalVal;
-  document.getElementById('mArchivador').textContent  = archivVal;
-  document.getElementById('cardTimestamp').textContent =
-    'Consultado el ' + new Date().toLocaleString('es-BO');
+  document.getElementById('cardTimestamp').textContent = 'Consultado el ' + new Date().toLocaleString('es-BO');
+
+  /* Círculo Evaluación (0–45) */
+  renderCirculo('circEvalFg','circEvalVal','circEvalLabel', evalVal, 45);
+
+  /* Círculo Archivador (0–40) */
+  renderCirculo('circArchFg','circArchVal','circArchLabel', archVal, 40);
+
+  /* Proyecto (0–40) barra lineal */
+  renderProyecto(proyVal);
+
+  /* Sesiones */
+  renderSesiones(sesiones);
+
+  /* Cerrar sesiones al mostrar */
+  const wrap = document.getElementById('sesionesGridWrap');
+  const tog  = document.getElementById('sesionesToggle');
+  wrap.classList.remove('open');
+  tog.classList.remove('open');
+
   show('user');
+}
+
+/* ── Círculo SVG con degradado rojo→verde ── */
+function renderCirculo(fgId, valId, labelId, valor, maximo) {
+  const pct   = Math.min(Math.max(valor / maximo, 0), 1);
+  const circ  = 2 * Math.PI * 36;          // 226.2
+  const offset= circ * (1 - pct);
+  const color = pctToColor(pct);
+
+  const fg = document.getElementById(fgId);
+  fg.style.stroke = color;
+  /* animación: primero resetear, luego animar */
+  fg.style.transition = 'none';
+  fg.style.strokeDashoffset = circ;
+  requestAnimationFrame(() => {
+    fg.style.transition = 'stroke-dashoffset 1s ease, stroke 0.5s ease';
+    fg.style.strokeDashoffset = offset;
+  });
+
+  const valEl = document.getElementById(valId);
+  valEl.textContent = valor || 0;
+  valEl.style.color = color;
+
+  /* etiqueta porcentual */
+  const pctInt = Math.round(pct * 100);
+  document.getElementById(labelId).textContent = pctInt + '% alcanzado';
+}
+
+/* ── Proyecto barra lineal ── */
+function renderProyecto(val) {
+  const pct = Math.min(Math.max(val / 40, 0), 1) * 100;
+  const bar  = document.getElementById('proyectoBar');
+  const badge= document.getElementById('proyectoBadge');
+  const valEl= document.getElementById('proyectoVal');
+
+  bar.style.width = '0%';
+  requestAnimationFrame(() => {
+    bar.style.transition = 'width 1s ease';
+    bar.style.width = pct + '%';
+  });
+
+  valEl.textContent = val + ' / 40';
+
+  let estado, bg, color;
+  if (val <= 10) {
+    estado = 'No iniciado'; bg = 'rgba(220,38,38,0.12)'; color = '#dc2626';
+    bar.style.background = 'linear-gradient(90deg,#dc2626,#f87171)';
+  } else if (val <= 30) {
+    estado = 'En proceso'; bg = 'rgba(217,119,6,0.12)'; color = '#d97706';
+    bar.style.background = 'linear-gradient(90deg,#f59e0b,#fbbf24)';
+  } else {
+    estado = 'Completado'; bg = 'rgba(5,150,105,0.12)'; color = '#059669';
+    bar.style.background = 'linear-gradient(90deg,#059669,#34d399)';
+  }
+  badge.textContent = estado;
+  badge.style.background = bg;
+  badge.style.color = color;
+  valEl.style.color = color;
+}
+
+/* ── Sesiones grid ── */
+function renderSesiones(sesiones) {
+  const grid = document.getElementById('sesionesGrid');
+  grid.innerHTML = '';
+
+  for (let i = 0; i < 12; i++) {
+    const raw = sesiones[i];
+    const val = raw !== undefined && raw !== '' ? parseFloat(raw) : null;
+    const cell = document.createElement('div');
+    cell.className = 'sesion-cell';
+
+    let iconHtml, colorClass, valText;
+    if (val === null || isNaN(val)) {
+      colorClass = 's-empty';
+      iconHtml   = '<span style="color:var(--muted);font-size:18px">—</span>';
+      valText    = '–';
+    } else if (val <= 3) {
+      colorClass = 's-red';
+      iconHtml   = '<span style="color:#dc2626;font-size:22px">✗</span>';
+      valText    = val;
+    } else if (val <= 6) {
+      colorClass = 's-yellow';
+      iconHtml   = '<span style="color:#d97706;font-size:22px">—</span>';
+      valText    = val;
+    } else {
+      colorClass = 's-green';
+      iconHtml   = '<span style="color:#059669;font-size:20px">✓</span>';
+      valText    = val;
+    }
+
+    cell.classList.add(colorClass);
+    cell.innerHTML = `
+      <span class="s-label">Ses. ${i+1}</span>
+      <span class="s-icon">${iconHtml}</span>
+      <span class="s-val">${valText}</span>
+    `;
+    grid.appendChild(cell);
+  }
+}
+
+/* ── Toggle sesiones ── */
+function toggleSesiones() {
+  const wrap = document.getElementById('sesionesGridWrap');
+  const tog  = document.getElementById('sesionesToggle');
+  wrap.classList.toggle('open');
+  tog.classList.toggle('open');
+}
+
+/* ── Conversión porcentaje → color rojo→amarillo→verde ── */
+function pctToColor(pct) {
+  // 0=rojo #ef4444  0.5=amarillo #f59e0b  1=verde #10b981
+  const r1=[239,68,68], r2=[245,158,11], r3=[16,185,129];
+  let r,g,b;
+  if (pct < 0.5) {
+    const t = pct * 2;
+    r = Math.round(r1[0]+(r2[0]-r1[0])*t);
+    g = Math.round(r1[1]+(r2[1]-r1[1])*t);
+    b = Math.round(r1[2]+(r2[2]-r1[2])*t);
+  } else {
+    const t = (pct-0.5)*2;
+    r = Math.round(r2[0]+(r3[0]-r2[0])*t);
+    g = Math.round(r2[1]+(r3[1]-r2[1])*t);
+    b = Math.round(r2[2]+(r3[2]-r2[2])*t);
+  }
+  return `rgb(${r},${g},${b})`;
 }
 
 /* ── RESET ── */
 function resetApp() {
   document.getElementById('manualCode').value = '';
   show('scan');
-  setStatus('idle', 'Listo para escanear');
+  setStatus('idle','Listo para escanear');
 }
 
 /* ── LOGIN ADMIN ── */
@@ -725,13 +1030,10 @@ function abrirLoginAdmin() {
   document.getElementById('adminLoginModal').classList.add('open');
   setTimeout(() => document.getElementById('adminPwInput').focus(), 100);
 }
-function cerrarLoginAdmin() {
-  document.getElementById('adminLoginModal').classList.remove('open');
-}
+function cerrarLoginAdmin() { document.getElementById('adminLoginModal').classList.remove('open'); }
 function verificarAdmin() {
   if (document.getElementById('adminPwInput').value === adminPassword) {
-    cerrarLoginAdmin();
-    abrirAdmin();
+    cerrarLoginAdmin(); abrirAdmin();
   } else {
     document.getElementById('loginError').style.display = 'flex';
     const inp = document.getElementById('adminPwInput');
@@ -755,19 +1057,19 @@ function cerrarAdmin() { show('scan'); }
 function adminGuardarURLs() {
   const u1 = document.getElementById('adminUrlEst').value.trim();
   const u2 = document.getElementById('adminUrlTrim').value.trim();
-  if (!u1 || !u2) { toast('⚠️ Ingresa ambas URLs.'); return; }
+  if (!u1||!u2) { toast('⚠️ Ingresa ambas URLs.'); return; }
   URL_EST = u1; URL_TRIM = u2;
-  localStorage.setItem('csv_est',  u1);
+  localStorage.setItem('csv_est', u1);
   localStorage.setItem('csv_trim', u2);
-  toast('✅ URLs guardadas. Todos los usuarios usarán las nuevas hojas.');
+  toast('✅ URLs guardadas correctamente.');
 }
 
 function cambiarPassword() {
   const p1 = document.getElementById('newPw1').value;
   const p2 = document.getElementById('newPw2').value;
-  if (!p1 || !p2)    { toast('⚠️ Completa ambos campos.'); return; }
-  if (p1.length < 4) { toast('⚠️ Mínimo 4 caracteres.'); return; }
-  if (p1 !== p2)     { toast('⚠️ Las contraseñas no coinciden.'); return; }
+  if (!p1||!p2)    { toast('⚠️ Completa ambos campos.'); return; }
+  if (p1.length<4) { toast('⚠️ Mínimo 4 caracteres.'); return; }
+  if (p1!==p2)     { toast('⚠️ Las contraseñas no coinciden.'); return; }
   adminPassword = p1;
   localStorage.setItem('admin_pw', p1);
   document.getElementById('newPw1').value = '';
@@ -779,49 +1081,40 @@ async function probarConexion() {
   const res = document.getElementById('testResult');
   const btn = document.getElementById('btnTest');
   btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Probando…';
-  btn.disabled = true;
-  res.style.display = 'none';
-
+  btn.disabled = true; res.style.display = 'none';
   async function probar(url, nombre) {
     try {
       const r = await fetch(url);
       if (r.ok) {
-        const filas = parseCSV(await r.text()).length;
-        return `<span style="color:var(--success)"><i class="fas fa-circle-check"></i> <b>${nombre}</b>: OK — ${filas} registros</span>`;
+        const f = parseCSV(await r.text()).length;
+        return `<span style="color:var(--success)"><i class="fas fa-circle-check"></i> <b>${nombre}</b>: OK — ${f} registros</span>`;
       }
-      return `<span style="color:var(--error)"><i class="fas fa-circle-xmark"></i> <b>${nombre}</b>: Error HTTP ${r.status}</span>`;
+      return `<span style="color:var(--error)"><i class="fas fa-circle-xmark"></i> <b>${nombre}</b>: HTTP ${r.status}</span>`;
     } catch(e) {
       return `<span style="color:var(--error)"><i class="fas fa-circle-xmark"></i> <b>${nombre}</b>: ${e.message}</span>`;
     }
   }
-
-  const [r1, r2] = await Promise.all([
-    probar(URL_EST,  'Hoja "estudiantes"'),
-    probar(URL_TRIM, 'Hoja "1er trimestre"')
-  ]);
-  res.style.display = 'flex';
-  res.innerHTML = r1 + r2;
-  btn.innerHTML = '<i class="fas fa-wifi"></i> Probar ahora';
-  btn.disabled = false;
+  const [r1,r2] = await Promise.all([probar(URL_EST,'Estudiantes'),probar(URL_TRIM,'1er Trimestre')]);
+  res.style.display='flex'; res.innerHTML=r1+r2;
+  btn.innerHTML='<i class="fas fa-wifi"></i> Probar ahora'; btn.disabled=false;
 }
 
 /* ── HELPERS ── */
 function setStatus(type, txt) {
   const pill = document.getElementById('statusPill');
   pill.className = 'status-pill';
-  if (type !== 'idle') pill.classList.add(type);
+  if (type!=='idle') pill.classList.add(type);
   document.getElementById('statusTxt').textContent = txt;
 }
 function togglePw(id, btn) {
   const inp = document.getElementById(id);
-  const hide = inp.type === 'password';
+  const hide = inp.type==='password';
   inp.type = hide ? 'text' : 'password';
   btn.innerHTML = hide ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
 }
 function toast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3200);
 }
 </script>
